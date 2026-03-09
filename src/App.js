@@ -1,5 +1,8 @@
 import  React  from "react";
 import ReactDOM from "react-dom/client"
+import Statistics from "./components/Statistics/Statistics";
+import FeedbackOptions from "./components/FeedbackOptions/FeedbackOptions";
+// import Section from "./components/Section/Section";
 export default class App extends React.Component {
   state = {
     good: 0,
@@ -19,29 +22,26 @@ export default class App extends React.Component {
     return Object.values(this.state).reduce((acc, item) => acc + item, 0);
   }
 
+  countPositiveFeedbackPercentage = () => {
+    const total = this.countTotalFeedback()
+    return Math.round((this.state.good/total)*100)
+  }
+
+
   render() {
     const total = this.countTotalFeedback()
+    const positiveFeedback = this.countPositiveFeedbackPercentage()
+    console.log(positiveFeedback);
+    
     const option = ["good", "neutral", "bad"];
     const { good, neutral, bad } = this.state;
     return (
       <div>
         <h1>Please leave feedback</h1>
         <div>
-          {option.map((item) => {
-            return (
-              <button onClick={() => this.handleFeedback(item)} type="button" key={item}>
-                {item}
-              </button>
-            );
-          })}
+          <FeedbackOptions option={option} onLeaveFeedback={this.handleFeedback}/>
         </div>
-        <div>
-          <h2>Statistic</h2>
-          <p>good:{good }</p>
-          <p>natural:{ neutral}</p>
-          <p>bad:{bad}</p>
-          <p>total:{ total}</p>
-        </div>
+  <Statistics good={this.state.good} neutral={this.state.neutral} bad={this.state.bad} total={total} positiveFeedback={positiveFeedback}/>
       </div>
     );
   }

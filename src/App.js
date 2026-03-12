@@ -1,4 +1,5 @@
-import  React  from "react";
+import React from "react";
+import style from "./App.module.css"
 import ReactDOM from "react-dom/client"
 export default class App extends React.Component {
   state = {
@@ -24,27 +25,31 @@ export default class App extends React.Component {
     const option = ["good", "neutral", "bad"];
     const { good, neutral, bad } = this.state;
     return (
-      <div>
-        <h1>Please leave feedback</h1>
-        <div>
+      <div className={style.container}>
+        <h1 className={style.title}>Please leave feedback</h1>
+        <div className={style.box}>
           {option.map((item) => {
             return (
-              <button onClick={() => this.handleFeedback(item)} type="button" key={item}>
-                {item}
+              <button
+                className={style.addBtn}
+                onClick={() => this.handleFeedback(item)}
+                type="button"
+                key={item}
+              >
+                {item}{" "}
               </button>
             );
           })}
         </div>
-        <div>
-          <h2>Statistic</h2>
-          <p>good:{good }</p>
-          <p>natural:{ neutral}</p>
-          <p>bad:{bad}</p>
-          <p>total:{ total}</p>
+        <div className={style.boxe}>
+          <h2 className={style.text}>Statistic</h2>
+          <p className={style.desc}>good:{good}</p>
+          <p className={style.desc}>natural:{neutral}</p>
+          <p className={style.desc}>bad:{bad}</p>
+          <p className={style.desc}>total:{total}</p>
         </div>
       </div>
     );
   }
 
 }
-

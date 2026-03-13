@@ -8,11 +8,6 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.title {
-  font-size: 28px;
-  color: #333;
-  margin-bottom: 30px;
-}
 
 .box {
   display: flex;
@@ -75,8 +70,3 @@
   text-transform: capitalize;
 }
 
-.desc:last-child {
-  margin-top: 15px;
-  font-weight: 700;
-  color: #333;
-}

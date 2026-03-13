@@ -1,15 +1,17 @@
-// import { render } from "@testing-library/react";
-// import { Component } from "react";
-// export default class Section extends Component{
+import { render } from "@testing-library/react";
+import { Component } from "react";
+import style from"./Section.module.css"
+export default class Section extends Component {
 
 
      
-//     render(){
-//   const {title, children}=this.props
-//   return 
-//   <section>
-//   <h1>{title}</h1>
-//   {children}
-//   </section>
-//     }
-// }
+    render() {
+        const { title, children } = this.props;
+        return ( 
+            <section className={style.section}>
+                <h1 className={style.title}>{title}</h1>
+                {children}
+            </section>
+        );
+    }
+}
